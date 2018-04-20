@@ -13,6 +13,47 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/item', [
+    'uses' => 'InventarController@postItem'
+]);
+Route::get('/items',[
+    'uses' => 'InventarController@getItems'
+]);
+//Update Command
+Route::put('/item/{barcode}', [
+    'uses' => 'InventarController@putItem'
+]);
+Route::delete('/item/{barcode}', [
+        'uses' => 'InventarController@deleteItem'
+    ]
+);
+//Persons
+Route::post('/person', [
+    'uses' => 'PersonsController@postPerson'
+]);
+Route::get('/persons',[
+    'uses' => 'PersonsController@getPersons'
+]);
+//Update Command
+Route::put('/item/{personid}', [
+    'uses' => 'PersonsController@putPerson'
+]);
+Route::delete('/item/{personid}', [
+        'uses' => 'PersonsController@deletePerson'
+    ]
+);
+//Lendings
+Route::post('/lend', [
+    'uses' => 'LendingController@postLend'
+]);
+Route::get('/lends',[
+    'uses' => 'LendingController@getLends'
+]);
+//Update Command
+Route::put('/lend/{id}', [
+    'uses' => 'LendingController@putLend'
+]);
+Route::delete('/lend/{id}', [
+        'uses' => 'LendingController@deleteLend'
+    ]
+);
